@@ -47,8 +47,8 @@ function updateVotes() {
 
 function patchVotes(character) {
     const config = {
-        method: "PATCH",
-        headers: 'content-type': 'application/json'
+        method: "PATCH"
+        headers: {'Content-type', 'Application/json'}
     }
     body: json.stringify(character)
 }
