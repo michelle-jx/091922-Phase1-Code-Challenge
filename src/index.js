@@ -41,11 +41,11 @@ function updateVotes() {
             image: characterImage,
             votes: 0
         }
-        postCharacter(updatedCharacter)
+        patchVotes(updatedCharacter)
     })
 }
 
-const postCharacter(character) {
+function patchVotes(character) {
     const config = {
         method: "PATCH",
         headers: 'content-type': 'application/json'
@@ -55,3 +55,5 @@ const postCharacter(character) {
 fetch(url, config)
     .then((res) = res(json));
     .then(json => console.log())
+
+renderCharacter(updatedCharacter)
