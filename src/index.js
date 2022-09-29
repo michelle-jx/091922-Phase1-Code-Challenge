@@ -30,12 +30,28 @@ function renderDetails(character) {
     voteCount.textContent = character.votes;
 }
 
-function createNewCharacter(e) {
-    e.preventDefault();
-    const newCharacter = {
-        name: e.target.name.value,
-        image: e.target.image.value,
-        votes: e.target.votes.value,
-    }
-    renderCharacter(newCharacter);
+function updateVotes() {
+    const form = document.querySelector('add-vote-form')
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const totalVotes = e.target[0].value;
+
+        const updatedCharacter = {
+            name: characterName,
+            image: characterImage,
+            votes: 0
+        }
+        postCharacter(updatedCharacter)
+    })
 }
+
+const postCharacter(character) {
+    const config = {
+        method: "PATCH",
+        headers: 'content-type': 'application/json'
+    }
+    body: json.stringify(character)
+}
+fetch(url, config)
+    .then((res) = res(json));
+    .then(json => console.log())
